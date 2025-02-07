@@ -3,7 +3,7 @@ import axios from "axios";
 
 @Injectable()
 export class CurrencyRateService {
-    async getExchange(from: string, to: string): Promise<number> {
+    async getExchangeRate(from: string, to: string): Promise<number> {
         const url = `https://api.exchange.cryptomkt.com/api/3/public/price/rate?from=${to}&to=${from}`;
 
         try {
