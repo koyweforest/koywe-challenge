@@ -5,6 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class CurrencyService {
+    getQuoteById(id: string) {
+        throw new Error('Method not implemented.');
+    }
     constructor(private readonly currencyRateService: CurrencyRateService) {}
 
     async convertToCrypto(amount: number, currency: string, crypto: string): Promise<number> {
