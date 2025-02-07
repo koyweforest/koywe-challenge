@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { CurrencyController } from './currency/currency.controller';
 import { CurrencyModule } from './currency/currency.module';
 
+// importo CurrencyModule
 @Module({
   imports: [CurrencyModule],
   controllers: [AppController, CurrencyController],
