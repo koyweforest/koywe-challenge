@@ -15,6 +15,18 @@ export class CurrencyService {
         return amount * exchangeRate;
     }
 
+    async createQuote(amount: number, from: string, to: string): Promise<{ amount: number; from: string; to: string; exchangeRate: number }> {
+        const exchangeRate = await this.getExchangeRate(from, to);
+        const convertedAmount = amount * exchangeRate;
+
+        return {
+            amount: convertedAmount,
+            from,
+            to,
+            exchangeRate,
+        };
+    }
+
     private async getExchangeRate(from: string, to: string): Promise<number> {
         //tasa de cambio simulada
         return 0.5;
