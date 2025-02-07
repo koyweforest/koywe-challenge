@@ -16,6 +16,7 @@ export class CurrencyRateService {
 
             return rate;
         } catch (error) {
+            console.log('Error al obtener el tipo de cambio:', error);
             throw new HttpException('Error al obtener el tipo de cambio', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
