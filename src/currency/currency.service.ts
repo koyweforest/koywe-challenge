@@ -12,7 +12,7 @@ export class CurrencyService {
         return amount * exchangeRate;
     }
 
-    async createQuote(amount: number, from: string, to: string): Promise<{ amount: number; from: string; to: string; exchangeRate: number }> {
+    async createQuote(amount: number, from: string, to: string): Promise<{ amount: number; from: string; to: string }> {
         const exchangeRate = await this.getExchangeRate(from, to);
         const convertedAmount = amount * exchangeRate;
 
@@ -20,7 +20,6 @@ export class CurrencyService {
             amount: convertedAmount,
             from,
             to,
-            exchangeRate,
         };
     }
 
