@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, NotFoundException, Param, Post } from '@nestjs/common';
 import { CurrencyService } from './currency.service';
 
 @Controller('api/currency')
@@ -32,5 +32,14 @@ export class CurrencyController {
     @Body() body: { amount: number; from: string; to: string },
   ) {
     return this.currencyService.createQuote(body.amount, body.from, body.to);
+  }
+
+  @Get('quote/:id')
+  async getQuote(@Param('id') id: string): Promise<Quote> {
+    const quote = await this.currencyService.getQuoteById(id);
+    if (!quote) {
+        throw new NotFoundException('Cotizacion no encontrada o ha expirado');
+    }
+    return quote;
   }
 }
