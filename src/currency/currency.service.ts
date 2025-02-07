@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CurrencyService {
+    createQuote(amount: number, from: string, to: string) {
+        throw new Error('Method not implemented.');
+    }
     async convertToCrypto(amount: number, currency: string, crypto: string): Promise<number> {
         const exchangeRate = await this.getExchangeRate(currency, crypto);
         return amount * exchangeRate;

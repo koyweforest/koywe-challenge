@@ -26,4 +26,11 @@ export class CurrencyController {
       body.currency,
     );
   }
+
+  @Post('quote')
+  async createQuote(
+    @Body() body: { amount: number; from: string; to: string },
+  ) {
+    return this.currencyService.createQuote(body.amount, body.from, body.to);
+  }
 }
